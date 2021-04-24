@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    background-color: #1f8bf1;
+    font-size: 20px;
+    color: white;
+}
+
+header  {
+    /* background-color: rgba(0, 0, 0, 0.877); */
+    background-color: #222222;
+    color:white;
+    padding: 1em;
+    height: 4em;
+}
+
+
+
+
+nav ul li {
+    display: inline;
+    padding: 2.2em;
+    
+}
+
+nav ul li a {
+    color:white;
+    text-decoration: none;
+}
+nav {
+    text-align: right;
+
+    position: relative;
+    
+    bottom: 2.8em;
+    
+    left: -1em;
+
+
+}
+
+#register_form{
+    padding: 1em;
+}
+
+nav ul li a:hover{
+    color: yellow!important;
+    text-decoration: none;
+    /* border:1px dashed white;
+    border: #1f8bf1 1px solid; */
+}
+
+nav ul:hover{
+    
+    color: yellow !important;
+}
+

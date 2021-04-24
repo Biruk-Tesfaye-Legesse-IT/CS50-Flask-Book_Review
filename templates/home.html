@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+    <link href="../static/css/search.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/main.css" />
+
+
+  </head>
+  <body>
+    <header>
+      <h2>Ethio Book Store</h2>
+      <nav>
+          <ul>
+              <li>
+                  <a href="#" onclick="show_register()">Hi, {{session['username']}}</a>
+              </li>
+              <li>
+                  <a href="{{url_for('logout')}}"">Logout</a>
+              </li>
+          </ul>
+      </nav>
+  </header>
+
+    <div class="s005">
+      <form  id="search_form" method="POST" action="{{url_for('result')}}">
+        <fieldset>
+          <legend>WHAT BOOK ARE YOU LOOKING FOR?</legend>
+          <div class="inner-form">
+            <div class="input-field">
+
+               
+              <input class="form-control text-white" type="text" placeholder="Type here to search by ISBN, Author or Title........." name="search" required style="border-color: black; background-color: black; height: 75px; width: 700px; margin-left: 50px"/>
+              
+              <button class="btn-search" type="submit" value="Search" name="submit" style="color: black; font-size: 2em; margin-bottom: 40px; margin-right:35px" ><i class="fa fa-search"></i></button>
+                 
+              </button>
+            </div>
+          </div>
+         
+        </fieldset>
+      </form>
+      <h3><code>{{search_error}}</code></h3>
+    </div>
+    <script src="../static/js/choices.js"></script>
+    <script>
+      var textPresetVal = new Choices('#choices-text-preset-values',
+      {
+        removeItemButton: true,
+      });
+
+    </script>
+  </body>
+</html>
