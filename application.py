@@ -19,7 +19,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Set up database
-engine = create_engine("postgresql://postgres:root@localhost/book_store")
+engine = create_engine("postgresql://cqrlmoqswiquqf:da8d2dcbe9d00c77ad09320c8eb86851b0243599c5b62fa8c280bbedf582b96f@ec2-52-87-107-83.compute-1.amazonaws.com:5432/d4n1i8iase18lm"")
 db = scoped_session(sessionmaker(bind=engine))
 
 
