@@ -49,6 +49,9 @@
             </nav>
         </header>
 
+        <p class="text-white">{{success_message}}</p>
+        <p class="text-white">{{error_message}}</p>
+
         <div class="dcont1 card rounded">
             <div class="dcont2">
 
@@ -84,15 +87,55 @@
                 <br>
                 <button style="margin-left:100px; margin-bottom:60px;" class="btn btn-primary">Submit</button>
             </form>
+
+            <!-- <table><tr>
+                <th> User</th>
+                <th>Review</th>
+                <th>Rating</th>
+                
+                
+            </tr></table> -->
+
+            <table >
+                {% if reviews %}
+                {% for review in reviews %}
+
+                User: {{review['username']}} <br>
+                Review: {{review['review']}} <br>
+                Rating: {{review['rating']}} <br>
+                <br><br>
+
+        
+                   <!-- <table>
+                       <tr>
+                    <th> </th>                   
+                    
+                    <th> </th>
+                    
+                    <th> </th> -->
+                </tr>
+                </table>
+                    
+        
+                {% endfor %}
+        {% endif %}
+                    </table>
       
 
         <!-- </table> -->
 
             </div>
-           <a type="button" class="btn btn-warning" href="/api/{{all.isbn}}">API</a>
+           <a style="margin-top: 40px;" type="button" class="btn btn-warning" href="/api/{{all.isbn}}">API</a>
 
             {%  endfor %}
                 {% endif %} 
+
+            
+                <!-- =================================== -->
+
+              
+                
+   
 
 
 

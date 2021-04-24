@@ -129,7 +129,7 @@ def result():
 
 
 
-# ===================================================== Details ===========================================================================
+# ===================================================== Deatails ===========================================================================
 
 
 @app.route("/bookpage/<string:isbn>",methods=["GET","POST"])
@@ -141,7 +141,9 @@ def details(isbn):
 	result_query = db.execute("SELECT * FROM books WHERE isbn=:isbn",{"isbn":isbn}).fetchall()
 	average_rating=request.json()['books'][0]['average_rating']
 	work_ratings_count=request.json()['books'][0]['work_ratings_count']
-	return render_template("details.html",result_query=result_query,average=average_rating,work_ratings_count=work_ratings_count)
+	result = db.execute("SELECT * from review where isbn=:isbn",{"isbn":isbn}).fetchall()
+	print(result)
+	return render_template("details.html",result_query=result_query,average=average_rating,work_ratings_count=work_ratings_count,reviews=result)
 
 # ===================================================== Review ===========================================================================
 
@@ -168,11 +170,19 @@ def review(isbn):
 			success = db.execute("INSERT INTO review (username,isbn,review,rating) VALUES (:username,:isbn,:review,:rating)",{"username":str(session['username']),"isbn":isbn,"review":review,"rating":rating})
 			db.commit()
 			if success:
-				return ("Success added "+ review)
+				success_message = "Your review has been added. Thank you for your feedback!"
+				return render_template("details.html",success_message=success_message) 
+				 
 			else:
-				return ("Something went wrong")
+				error_message="Something went wrong"
+				return render_template("details.html",error_message=error_message) 
+				
 		else:
-				return ("Please enter your Rating and review!")
+			error_message="Please enter your Rating and review!"
+   			# return redirect("details", error_message=error_message)
+  
+			return render_template("details.html",error_message=error_message) 
+			 
 		# else:
 		# 	return render_template("details.html",review_error="Your Rating And Review Already Exist")
 	else:
